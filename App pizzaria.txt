@@ -1,0 +1,64 @@
+# Bem-vindos à Pizzaria do Carlos
+print("Bem-vindos à Pizzaria do Carlos Eduardo Barbosa de Oliveira")
+
+# Função para exibir o menu
+def exibir_menu():
+    print("\nMENU DE PIZZAS:")
+    print("Sabores: Pizza Salgada (PS), Pizza Doce (PD)")
+    print("Tamanhos: P (Pequena), M (Média), G (Grande)")
+    print("Preços:")
+    print("Tamanho P - PS: R$ 30, PD: R$ 34")
+    print("Tamanho M - PS: R$ 45, PD: R$ 48")
+    print("Tamanho G - PS: R$ 60, PD: R$ 66")
+
+# Função para calcular o preço com base no sabor e no tamanho
+def calcular_preco(sabor, tamanho):
+    precos = {
+        'PS': {'P': 30, 'M': 45, 'G': 60},  # Preços para Pizza Salgada
+        'PD': {'P': 34, 'M': 48, 'G': 66}   # Preços para Pizza Doce
+    }
+    
+    if sabor in precos and tamanho in precos[sabor]:
+        return precos[sabor][tamanho]
+    else:
+        return None  # Caso valores sejam inválidos
+
+# Variável acumuladora para o total do pedido
+total_pedido = 0
+
+# Loop principal
+while True:
+    # Exibir o menu ao usuário
+    exibir_menu()
+
+    # Input para o sabor da pizza
+    sabor = input("\nEscolha o sabor da pizza (PS/PD): ").upper()
+    if sabor not in ['PS', 'PD']:
+        print("Sabor inválido. Tente novamente.")
+        continue  # Volta ao início do loop
+
+    # Input para o tamanho da pizza
+    tamanho = input("Escolha o tamanho da pizza (P/M/G): ").upper()
+    if tamanho not in ['P', 'M', 'G']:
+        print("Tamanho inválido. Tente novamente.")
+        continue  # Volta ao início do loop
+
+    # Calcular o preço da pizza escolhida
+    preco = calcular_preco(sabor, tamanho)
+    
+    if preco is None:
+        print("Erro no cálculo do preço. Tente novamente.")
+        continue
+
+    # Adicionar o preço ao total do pedido
+    total_pedido += preco
+    print(f"Você adicionou uma pizza de R$ {preco:.2f} ao pedido.")
+
+    # Perguntar ao cliente se deseja continuar pedindo
+    continuar = input("Deseja pedir mais alguma coisa? (S/N): ").upper()
+    if continuar == 'N':
+        break  # Sai do loop e encerra o pedido
+
+# Exibir o valor total do pedido
+print(f"\nO total do seu pedido é: R$ {total_pedido:.2f}")
+print("Obrigado por escolher a Pizzaria do Carlos Eduardo Barbosa de Oliveira!")

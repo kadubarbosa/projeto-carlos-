@@ -1,0 +1,75 @@
+# Sistema desenvolvido por [Carlos Eduardo Barbosa de Oliveira] 
+
+print("Sistema desenvolvido por [Carlos Eduardo Barbosa de Oliveira]") 
+
+  
+
+# Função para calcular o valor mensal do plano de saúde 
+
+def calcular_valor_mensal(valor_base, idade): 
+
+    # Verificar a idade e aplicar o percentual correspondente 
+
+    if idade >= 0 and idade <= 19: 
+
+        porcentagem = 100 
+
+    elif idade >= 20 and idade <= 29: 
+
+        porcentagem = 150 
+
+    elif idade >= 30 and idade <= 39: 
+
+        porcentagem = 225 
+
+    elif idade >= 40 and idade <= 49: 
+
+        porcentagem = 240 
+
+    elif idade >= 50 and idade <= 59: 
+
+        porcentagem = 350 
+
+    elif idade >= 60: 
+
+        porcentagem = 600 
+
+    else: 
+
+        return "Idade inválida." 
+
+     
+
+    # Calcular o valor mensal 
+
+    valor_mensal = valor_base + (valor_base * porcentagem / 100) 
+
+    return valor_mensal 
+
+  
+
+# Solicitar o valor base e a idade do usuário 
+
+valor_base = float(input("Informe o valor base do plano (em R$): ")) 
+
+idade = int(input("Informe a idade do cliente: ")) 
+
+  
+
+# Condição para informar sobre idade acima de 29 anos 
+
+if idade > 29: 
+
+    print("Atenção: idade maior ou igual a 29 anos.") 
+
+  
+
+# Chamar a função para calcular o valor mensal 
+
+valor_mensal = calcular_valor_mensal(valor_base, idade) 
+
+  
+
+# Exibir o valor mensal do plano 
+
+print(f"O valor mensal do plano de saúde é: R$ {valor_mensal:.2f}")
